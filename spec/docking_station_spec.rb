@@ -9,11 +9,11 @@ describe DockingStation do
   station = DockingStation.new
   bike = Bike.new
   it 'Check that our instance variable is 0 before docking any bikes' do
-    expect(station.contents).to eq []
+    expect(station.bikes).to eq []
   end
   it 'Check that the instance variable array contains bike we just docked' do
     station.dock(bike)
-    expect(station.contents).to include bike
+    expect(station.bikes).to include bike
   end
 
   # it { is_expected.to have_attributes(assigns(:bike) == 0) }
