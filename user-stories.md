@@ -9,9 +9,9 @@ Challenge 2
 | --------------- | -----------  |
 | Person          |              |
 | Bike            | is_working?  |
-|                 | dock         |
 | Docking station | release_bike |
-|  | bike_present |
+|                 | bike_present |
+|                 | dock         |
 
 ![](image.png)
 
