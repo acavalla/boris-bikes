@@ -1,7 +1,10 @@
 # Day 1
 
+## Why is a README important? ##
+A README is the front page of a project. It explains what the code does and why. This helps your software proliferate as developers can understand how to use it and where they might need to.
+
 ## User stories / domain models ##
-Challenge 1, 2
+Challenge 2
 | Objects         | Messages     |
 | --------------- | -----------  |
 | Person          |              |
