@@ -12,10 +12,6 @@ class DockingStation
   def dock(bike)
     @bikes << bike
   end
-
-  def contents
-    @bikes
-  end
 end
 
 class Bike
