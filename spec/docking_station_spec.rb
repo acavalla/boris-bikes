@@ -1,23 +1,29 @@
 require 'docking_station'
 
 describe DockingStation do
-  let(:bike) {double 'bike'}
-  it { is_expected.to respond_to(:release_bike) }
+  # let(:bike) {double 'bike'}
+  describe '.release_bike' do
+    it { is_expected.to respond_to(:release_bike) }
 
-  it 'Should release a working bike' do
-    expect(subject.release_bike.working?).to eq true
+    it 'should release a working bike' do
+      bike = subject.release_bike
+      expect(bike).to be_working
+    end
   end
-
   it { is_expected.to respond_to(:dock).with(1).arguments }
 
-  it 'Check that our instance variable is 0 before docking any bikes' do
-    expect(subject.bikes).to eq []
+  describe '#bikes' do
+    it 'starts at 0 before any bikes are docked' do
+      expect(subject.bikes).to eq []
+    end
   end
 
-  it 'Check that the instance variable array contains bike we just docked' do
-    subject.dock(bike)
-    expect(subject.bikes).to include bike
+  describe '.dock' do
+    it 'stores docked bikes in the @bikes array' do
+      bike = Bike.new
+      subject.dock(bike)
+      expect(subject.bikes).to include bike
+    end
   end
-
   # it { is_expected.to have_attributes(assigns(:bike) == 0) }
 end

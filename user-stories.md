@@ -15,9 +15,10 @@ Challenge 2
 
 ![](image.png)
 
-```As a person,
+```
+As a person,
 So that I can use a bike,
-I'd like a docking station to release a bike.
+I'd like a docking station to release a bike
 
 As a person,
 So that I can use a good bike,
@@ -33,7 +34,7 @@ I want to see a bike that has been docked
 
 As a member of the public,
 So that I am not confused and charged unnecessarily,
-I'd like docking stations not to release bikes when there are none available.
+I'd like docking stations not to release bikes when there are none available
 ```
 ## Errors (are good) ##
 Challenge 3, 4
