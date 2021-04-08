@@ -11,12 +11,12 @@ describe DockingStation do
   it { is_expected.to respond_to(:dock).with(1).arguments }
 
   it 'Check that our instance variable is 0 before docking any bikes' do
-    expect(subject.contents).to eq []
+    expect(subject.bikes).to eq []
   end
 
   it 'Check that the instance variable array contains bike we just docked' do
     subject.dock(bike)
-    expect(subject.contents).to include bike
+    expect(subject.bikes).to include bike
   end
 
   # it { is_expected.to have_attributes(assigns(:bike) == 0) }
