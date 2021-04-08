@@ -6,6 +6,7 @@ class Bike
 
   def broken
     @working = false
+    return true
   end
 
   def working?
