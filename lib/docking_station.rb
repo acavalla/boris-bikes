@@ -10,10 +10,7 @@ class DockingStation
 
   def release_bike
     check_availability
-    working_bikes = bikes - broken_bikes
-    bike = working_bikes[-1]
-    bikes.delete(bike)
-    bike
+    release_and_return
   end
 
   def dock(bike)
@@ -48,5 +45,15 @@ class DockingStation
   def check_availability
     raise "Sorry, no bikes" if empty?
     raise "Sorry, no working bikes" if no_working_bikes?
+  end
+
+  def working_bikes
+    bikes - broken_bikes
+  end
+
+  def release_and_return
+    bike = working_bikes[-1]
+    bikes.delete(bike)
+    bike
   end
 end
