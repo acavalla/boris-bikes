@@ -13,12 +13,16 @@ class DockingStation
   end
 
   def dock(bike)
-    raise "Sorry, station full" if bikes.length == 1
+    raise "Sorry, station full" if full?
     @bikes << bike
   end
 
   private
   def empty?
     bikes.length == 0
+  end
+
+  def full?
+    bikes.length == 1
   end
 end
