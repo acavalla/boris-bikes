@@ -1,13 +1,8 @@
 require 'docking_station'
 
 describe DockingStation do
-  let(:bike) { double 'bike' }
-  let(:bike2) { double 'bike' }
-
-  before do
-    allow(bike).to receive(:working?).and_return(true)
-    allow(bike2).to receive(:working?).and_return(false)
-  end
+  let(:bike) { double :bike, working?: true  }
+  let(:bike2) { double :bike, working?: false }
 
   describe '.release_bike' do
     it { is_expected.to respond_to(:release_bike) }
