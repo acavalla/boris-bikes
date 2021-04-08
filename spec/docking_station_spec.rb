@@ -1,22 +1,20 @@
 require 'docking_station'
 
 describe DockingStation do
-  # let(:bike) {double 'bike'}
+  let(:bike) { double 'bike' }
+  let(:bike2) { double 'bike' }
+
+  before do
+    allow(bike).to receive(:working?).and_return(true)
+    allow(bike2).to receive(:working?).and_return(false)
+  end
+
   describe '.release_bike' do
-    let(:bike) { double 'bike' }
-    let(:bike2) { double 'bike' }
-
-    before do
-      allow(bike).to receive(:working?).and_return(true)
-      allow(bike2).to receive(:working?).and_return(false)
-    end
-
     it { is_expected.to respond_to(:release_bike) }
 
     it 'should release a working bike' do
       subject.dock(bike)
-      bike = subject.release_bike
-      expect(bike).to be_working
+      expect(subject.release_bike).to be_working
     end
 
     it 'should not create infinite bikes' do
@@ -35,7 +33,6 @@ describe DockingStation do
       expect(subject.release_bike).to eq bike
     end
   end
-  it { is_expected.to respond_to(:dock).with(1).arguments }
 
   describe '#bikes' do
     it 'starts at 0 before any bikes are docked' do
@@ -44,8 +41,9 @@ describe DockingStation do
   end
 
   describe '.dock' do
+    it { is_expected.to respond_to(:dock).with(1).arguments }
+
     it 'stores docked bikes in the @bikes array' do
-      bike = Bike.new
       subject.dock(bike)
       expect(subject.bikes).to include bike
     end
@@ -55,17 +53,14 @@ describe DockingStation do
     end
 
     it 'stops accepting bikes when it is full' do
-      bike = Bike.new
       subject.capacity.times {subject.dock(bike)}
       expect{ subject.dock(bike) }.to raise_error "Sorry, station full"
     end
 
     context 'returning a broken bike' do
       it 'checks working and adds to array' do
-        bike = Bike.new
-        bike.broken
-        subject.dock(bike)
-        expect(subject.broken_bikes).to include bike
+        subject.dock(bike2)
+        expect(subject.broken_bikes).to include bike2
       end
     end
   end
