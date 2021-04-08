@@ -39,9 +39,9 @@ describe DockingStation do
     end
 
     it 'has a maximum storage of 1' do
-      bike, bike2 = Bike.new, Bike.new
-      subject.dock(bike)
-      expect{ subject.dock(bike2) }.to raise_error "Sorry, station full"
+      bike = Bike.new
+      20.times {subject.dock(bike)}
+      expect{ subject.dock(bike) }.to raise_error "Sorry, station full"
 
     end
   end

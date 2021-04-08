@@ -23,6 +23,6 @@ class DockingStation
   end
 
   def full?
-    bikes.length == 1
+    bikes.length == 20
   end
 end
