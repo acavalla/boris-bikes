@@ -53,9 +53,19 @@ describe DockingStation do
     end
 
     context 'returning a broken bike' do
-      it 'checks working and adds to array' do
+      it 'checks working status and adds to array if broken' do
+        subject.dock(bike)
         subject.dock(bike2)
+        expect(subject.broken_bikes).not_to include bike
         expect(subject.broken_bikes).to include bike2
+      end
+    end
+
+    describe '.bike_pickup' do
+      it 'instantiates a van and moves the broken_bikes into it' do
+        subject.dock(bike2)
+        subject.bike_pickup
+        expect(subject.broken_bikes).not_to include bike2
       end
     end
   end

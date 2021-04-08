@@ -23,6 +23,12 @@ class DockingStation
     bikes << bike
   end
 
+  def bike_pickup
+    van = Van.new(@broken_bikes)
+    @broken_bikes = []
+  end
+
+
   private
   def empty?
     bikes.length == 0
