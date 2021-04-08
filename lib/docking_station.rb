@@ -6,11 +6,16 @@ class DockingStation
   end
 
   def release_bike
-    raise "Sorry, no bikes" if bikes.length == 0
+    raise "Sorry, no bikes" if empty?
     Bike.new
   end
 
   def dock(bike)
     @bikes << bike
+  end
+
+  private
+  def empty?
+    bikes.length == 0
   end
 end
