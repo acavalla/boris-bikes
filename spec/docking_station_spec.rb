@@ -15,6 +15,13 @@ describe DockingStation do
     it 'should not create infinite bikes' do
       expect{ subject.release_bike }.to raise_error "Sorry, no bikes"
     end
+
+    it 'should release a previously docked bike' do
+      bike = Bike.new
+      subject.dock(bike)
+      bike = subject.release_bike
+      expect(subject.bikes).not_to include bike
+    end
   end
   it { is_expected.to respond_to(:dock).with(1).arguments }
 
@@ -29,6 +36,13 @@ describe DockingStation do
       bike = Bike.new
       subject.dock(bike)
       expect(subject.bikes).to include bike
+    end
+
+    it 'has a maximum storage of 1' do
+      bike, bike2 = Bike.new, Bike.new
+      subject.dock(bike)
+      expect{ subject.dock(bike2) }.to raise_error "Sorry, station full"
+
     end
   end
   # it { is_expected.to have_attributes(assigns(:bike) == 0) }
