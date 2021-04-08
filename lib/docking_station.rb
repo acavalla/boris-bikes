@@ -6,6 +6,7 @@ class DockingStation
   end
 
   def release_bike
+    raise "Sorry, no bikes" if bikes.length == 0
     Bike.new
   end
 
