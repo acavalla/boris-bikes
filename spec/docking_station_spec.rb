@@ -38,7 +38,11 @@ describe DockingStation do
       expect(subject.bikes).to include bike
     end
 
-    it 'has a default maximum storage of 20' do
+    it 'has a maximum storage which defaults to 20' do
+      expect(subject.capacity).to eq 20
+    end
+
+    it 'stops accepting bikes when it is full' do
       bike = Bike.new
       subject.capacity.times {subject.dock(bike)}
       expect{ subject.dock(bike) }.to raise_error "Sorry, station full"
