@@ -7,7 +7,9 @@ class DockingStation
 
   def release_bike
     raise "Sorry, no bikes" if empty?
-    Bike.new
+    bike = bikes[-1]
+    bikes.delete(bike)
+    bike
   end
 
   def dock(bike)
