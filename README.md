@@ -5,4 +5,3 @@ A progressive challenge to model how a developer would build a program for the T
 ## Technology used ##
 
 Ruby
-Check

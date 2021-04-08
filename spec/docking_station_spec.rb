@@ -22,6 +22,15 @@ describe DockingStation do
       bike = subject.release_bike
       expect(subject.bikes).not_to include bike
     end
+
+    it 'should not release a broken bike' do
+      bike = Bike.new
+      bike2 = Bike.new
+      bike2.broken
+      subject.dock(bike)
+      subject.dock(bike2)
+      expect(subject.release_bike).to eq bike
+    end
   end
   it { is_expected.to respond_to(:dock).with(1).arguments }
 

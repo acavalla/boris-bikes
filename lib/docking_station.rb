@@ -11,8 +11,14 @@ class DockingStation
   def release_bike
     raise "Sorry, no bikes" if empty?
     bike = bikes[-1]
-    bikes.delete(bike)
-    bike
+    if bike.working
+      bikes.delete(bike)
+      bike
+    else
+      bike = bikes[-2]
+      bikes.delete(bike)
+      bike
+    end
   end
 
   def dock(bike)
