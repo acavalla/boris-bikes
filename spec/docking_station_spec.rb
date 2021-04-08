@@ -47,6 +47,14 @@ describe DockingStation do
       subject.capacity.times {subject.dock(bike)}
       expect{ subject.dock(bike) }.to raise_error "Sorry, station full"
     end
+
+    # context 'returning a broken bike' do
+    #   it 'checks working and adds to array' do
+    #     bike = Bike.new
+    #     subject.dock(bike)
+    #
+    #   end
+    # end
   end
   # it { is_expected.to have_attributes(assigns(:bike) == 0) }
 end
