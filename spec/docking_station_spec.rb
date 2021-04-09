@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'docking_station'
 
 describe DockingStation do
-  let(:bike) { double :bike, working?: true  }
+  let(:bike) { double :bike, working?: true }
   let(:bike2) { double :bike, working?: false }
   let(:van) { double :van }
-  let(:van_class) { double :van_class,  new: van }
+  let(:van_class) { double :van_class, new: van }
   let(:subject) { DockingStation.new(van_class: van_class) }
   describe '.release_bike' do
     it { is_expected.to respond_to(:release_bike) }
@@ -15,7 +17,7 @@ describe DockingStation do
     end
 
     it 'should not create infinite bikes' do
-      expect{ subject.release_bike }.to raise_error "Sorry, no bikes"
+      expect { subject.release_bike }.to raise_error 'Sorry, no bikes'
     end
 
     it 'should release a previously docked bike' do
@@ -50,8 +52,8 @@ describe DockingStation do
     end
 
     it 'stops accepting bikes when it is full' do
-      subject.capacity.times {subject.dock(bike)}
-      expect{ subject.dock(bike) }.to raise_error "Sorry, station full"
+      subject.capacity.times { subject.dock(bike) }
+      expect { subject.dock(bike) }.to raise_error 'Sorry, station full'
     end
   end
 

@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 class Bike
   attr_reader :working
+
   def initialize
     @working = true
   end
 
   def broken
     @working = false
-    return true
+    true
   end
 
   def fix

@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 require_relative 'bike'
 require_relative 'van'
 require_relative 'garage'
 
 class DockingStation
   attr_reader :bikes, :capacity, :vans
+
   DEFAULT_CAPACITY = 20
 
   def initialize(capacity = DEFAULT_CAPACITY, van_class: Van)
@@ -19,7 +22,8 @@ class DockingStation
   end
 
   def dock(bike)
-    raise "Sorry, station full" if full?
+    raise 'Sorry, station full' if full?
+
     bikes << bike
   end
 
@@ -30,7 +34,9 @@ class DockingStation
   end
 
   private
+
   attr_reader :van_class
+
   def add(van)
     @vans << van
   end
@@ -44,24 +50,20 @@ class DockingStation
   end
 
   def no_working_bikes?
-    bikes.select {|bike| bike.working?}.empty?
-  end
-
-  def broken?(bike)
-    bike.working? == false
+    bikes.select(&:working?).empty?
   end
 
   def check_availability
-    raise "Sorry, no bikes" if empty?
-    raise "Sorry, no working bikes" if no_working_bikes?
+    raise 'Sorry, no bikes' if empty?
+    raise 'Sorry, no working bikes' if no_working_bikes?
   end
 
   def working_bikes
-    bikes.select {|bike| bike.working?}
+    bikes.select(&:working?)
   end
 
   def broken_bikes
-    bikes.select {|bike| !bike.working?}
+    bikes.reject(&:working?)
   end
 
   def release_and_return

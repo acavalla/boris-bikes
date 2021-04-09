@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class Van
   attr_reader :bikes
+
   def initialize
     @bikes = []
   end
