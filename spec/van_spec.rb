@@ -20,7 +20,8 @@ describe Van do
 
   describe '.release_bikes' do
     it 'removes bikes from bikes array' do
-      subject.release_bikes([bike, bike2])
+      subject.accept_bikes([bike, bike2])
+      subject.release_bikes
       expect(subject.bikes).not_to include bike, bike2
     end
   end

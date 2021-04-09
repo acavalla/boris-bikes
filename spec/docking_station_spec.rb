@@ -67,5 +67,15 @@ describe DockingStation do
     end
   end
 
+  describe '.bike_dropoff' do
+    it 'receives a van of fixed bikes' do
+      allow(van).to receive(:release_bikes).and_return([bike])
+      subject.bike_dropoff(van)
+      expect(subject.bikes).to include bike
+    end
+  end
+
+
+
   # it { is_expected.to have_attributes(assigns(:bike) == 0) }
 end

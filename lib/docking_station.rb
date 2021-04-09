@@ -33,6 +33,10 @@ class DockingStation
     @bikes = working_bikes
   end
 
+  def bike_dropoff(van)
+    @bikes += van.release_bikes
+  end
+
   private
 
   attr_reader :van_class
