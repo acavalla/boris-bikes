@@ -18,7 +18,7 @@ class DockingStation
 
   def release_bike
     check_availability
-    release_and_return(working_bikes.last)
+    release(working_bikes.last)
   end
 
   def dock(bike)
@@ -30,7 +30,7 @@ class DockingStation
   def bike_pickup
     add(van_class.new)
     @vans.last.accept_bikes(broken_bikes)
-    broken_bikes.each { | bike| release_and_return(bike) }
+    broken_bikes.each { | bike| release(bike) }
   end
 
   def bike_dropoff(van)
@@ -70,7 +70,7 @@ class DockingStation
     bikes.reject(&:working?)
   end
 
-  def release_and_return(bike)
+  def release(bike)
     bikes.delete(bike)
   end
 end
