@@ -6,11 +6,11 @@ class DockingStation
   attr_reader :bikes, :capacity, :vans
   DEFAULT_CAPACITY = 20
 
-  def initialize(capacity = DEFAULT_CAPACITY)
+  def initialize(capacity = DEFAULT_CAPACITY, van)
     @bikes = []
     @vans = []
     @capacity = capacity
-    @van = Van.new
+    @van = van
   end
 
   def release_bike
@@ -24,13 +24,16 @@ class DockingStation
   end
 
   def bike_pickup
-    @vans << @van
+    @vans << create_van
     @vans[-1].accept_bikes(broken_bikes)
-    @bikes = bikes.select {|bike| bike.working?}
+    @bikes = working_bikes
   end
 
-
   private
+  def create_van
+    @van.new
+  end
+
   def empty?
     bikes.empty?
   end

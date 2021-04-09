@@ -3,6 +3,7 @@ require 'docking_station'
 describe DockingStation do
   let(:bike) { double :bike, working?: true  }
   let(:bike2) { double :bike, working?: false }
+  let(:subject) { DockingStation.new(Van) }
 
   describe '.release_bike' do
     it { is_expected.to respond_to(:release_bike) }
