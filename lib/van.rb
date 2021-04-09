@@ -1,6 +1,6 @@
 class Van
-  attr_reader :broken_bikes
-  def initialize(broken_bikes)
-    @broken_bikes = broken_bikes
+  attr_reader :bikes
+  def accept_bikes(bikes)
+    @bikes = bikes
   end
 end

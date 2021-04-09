@@ -51,25 +51,16 @@ describe DockingStation do
       subject.capacity.times {subject.dock(bike)}
       expect{ subject.dock(bike) }.to raise_error "Sorry, station full"
     end
+  end
 
-    context 'returning a broken bike' do
-      it 'checks working status and adds to array if broken' do
-        subject.dock(bike)
-        subject.dock(bike2)
-        expect(subject.broken_bikes).not_to include bike
-        expect(subject.broken_bikes).to include bike2
-      end
-    end
-
-    describe '.bike_pickup' do
-      it 'instantiates a van and moves the broken_bikes into it' do
-        subject.dock(bike2)
-        subject.bike_pickup
-        expect(subject.broken_bikes).not_to include bike2
-        expect(subject.bikes).not_to include bike2
-        expect(subject.vans[-1].broken_bikes).to include bike2
-      end
+  describe '.bike_pickup' do
+    it 'instantiates a van and moves the broken_bikes into it' do
+      subject.dock(bike2)
+      subject.bike_pickup
+      expect(subject.bikes).not_to include bike2
+      # expect(subject.vans[-1].bikes).to include bike2
     end
   end
+
   # it { is_expected.to have_attributes(assigns(:bike) == 0) }
 end

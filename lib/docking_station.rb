@@ -1,12 +1,16 @@
+require_relative 'bike'
+require_relative 'van'
+require_relative 'garage'
+
 class DockingStation
   attr_reader :bikes, :capacity, :broken_bikes, :vans
   DEFAULT_CAPACITY = 20
 
   def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
-    @broken_bikes = []
     @vans = []
     @capacity = capacity
+    @van = Van.new
   end
 
   def release_bike
@@ -16,14 +20,12 @@ class DockingStation
 
   def dock(bike)
     raise "Sorry, station full" if full?
-    broken_bikes << bike if broken?(bike)
     bikes << bike
   end
 
   def bike_pickup
-    @vans << Van.new(@broken_bikes)
-    @bikes -= broken_bikes
-    @broken_bikes = []
+    @vans << @van.accept_bikes(bikes.select {|bike| !bike.working?})
+    @bikes = bikes.select {|bike| bike.working?}
   end
 
 
@@ -37,7 +39,7 @@ class DockingStation
   end
 
   def no_working_bikes?
-    (bikes - broken_bikes).length == 0
+    bikes.select {|bike| bike.working?}.empty?
   end
 
   def broken?(bike)
@@ -50,7 +52,7 @@ class DockingStation
   end
 
   def working_bikes
-    bikes - broken_bikes
+    bikes.select {|bike| bike.working?}
   end
 
   def release_and_return
