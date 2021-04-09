@@ -24,14 +24,15 @@ class DockingStation
   end
 
   def bike_pickup
-    @vans << @van.accept_bikes(bikes.select {|bike| !bike.working?})
+    @vans << @van
+    @vans[-1].accept_bikes(broken_bikes)
     @bikes = bikes.select {|bike| bike.working?}
   end
 
 
   private
   def empty?
-    bikes.length == 0
+    bikes.empty?
   end
 
   def full?
@@ -53,6 +54,10 @@ class DockingStation
 
   def working_bikes
     bikes.select {|bike| bike.working?}
+  end
+
+  def broken_bikes
+    bikes.select {|bike| !bike.working?}
   end
 
   def release_and_return
