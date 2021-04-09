@@ -66,6 +66,8 @@ describe DockingStation do
         subject.dock(bike2)
         subject.bike_pickup
         expect(subject.broken_bikes).not_to include bike2
+        expect(subject.bikes).not_to include bike2
+        expect(subject.vans[-1].broken_bikes).to include bike2
       end
     end
   end
