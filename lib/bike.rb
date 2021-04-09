@@ -9,6 +9,10 @@ class Bike
     return true
   end
 
+  def fix
+    @working = true
+  end
+
   def working?
     working
   end
