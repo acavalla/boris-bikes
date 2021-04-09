@@ -14,4 +14,8 @@ class Garage
   def fix_bike(bike)
     bike.fix
   end
+
+  def release_bikes(bikes)
+    @bikes -= bikes
+  end
 end
