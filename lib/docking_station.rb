@@ -72,6 +72,5 @@ class DockingStation
 
   def release_and_return(bike)
     bikes.delete(bike)
-    bike
   end
 end
