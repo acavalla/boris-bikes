@@ -7,4 +7,8 @@ class Van
   def accept_bikes(bikes)
     @bikes += bikes
   end
+
+  def release_bikes(bikes)
+    @bikes -= bikes
+  end
 end
