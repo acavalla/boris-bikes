@@ -3,8 +3,9 @@ require 'docking_station'
 describe DockingStation do
   let(:bike) { double :bike, working?: true  }
   let(:bike2) { double :bike, working?: false }
-  let(:subject) { DockingStation.new(Van) }
-
+  let(:van) { double :van }
+  let(:van_class) { double :van_class,  new: van }
+  let(:subject) { DockingStation.new(van_class: van_class) }
   describe '.release_bike' do
     it { is_expected.to respond_to(:release_bike) }
 
@@ -55,11 +56,12 @@ describe DockingStation do
   end
 
   describe '.bike_pickup' do
-    it 'instantiates a van and moves the broken_bikes into it' do
+    it 'instantiates a van and moves the broken bikes into it' do
       subject.dock(bike2)
+      allow(van_class).to receive(:new).and_return van
+      allow(van).to receive(:accept_bikes)
       subject.bike_pickup
       expect(subject.bikes).not_to include bike2
-      expect(subject.vans[-1].bikes).to include bike2
     end
   end
 
