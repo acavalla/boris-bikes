@@ -34,7 +34,7 @@ class DockingStation
   end
 
   def bike_dropoff(van)
-    @bikes += van.release_bikes
+    van.release_bikes.each { |bike| dock(bike) }
   end
 
   private
