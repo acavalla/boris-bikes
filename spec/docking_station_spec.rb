@@ -59,8 +59,5 @@ describe DockingStation do
   end
 
   it_behaves_like BikeContainer
-
-
-
   # it { is_expected.to have_attributes(assigns(:bike) == 0) }
 end

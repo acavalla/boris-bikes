@@ -1,26 +1,13 @@
 # frozen_string_literal: true
 
 class Van
-  attr_reader :bikes, :capacity
-  DEFAULT_CAPACITY = 20
+  include BikeContainer
 
-  def initialize(capacity = DEFAULT_CAPACITY)
-    @bikes = []
-    @capacity = capacity
+  def load(bike)
+    add_bike(bike)
   end
 
-  def accept_bike(bike)
-    raise  'Sorry, van full' if full?
-    @bikes << bike
-  end
-
-  def release_bike
-    bike = bikes[-1]
-    bikes.delete(bike)
-  end
-
-  private
-  def full?
-    bikes.length == capacity
+  def unload
+    remove_bike
   end
 end
