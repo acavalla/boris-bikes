@@ -9,15 +9,14 @@ class Van
     @capacity = capacity
   end
 
-  def accept_bikes(new_bikes)
+  def accept_bike(bike)
     raise  'Sorry, van full' if full?
-    @bikes += new_bikes
+    @bikes << bike
   end
 
-  def release_bikes
-    arrived_bikes = @bikes
-    @bikes = []
-    arrived_bikes
+  def release_bike
+    bike = bikes[-1]
+    bikes.delete(bike)
   end
 
   private

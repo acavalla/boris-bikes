@@ -14,7 +14,7 @@ describe Garage do
 
   describe '.accept_bikes' do
     it 'stores bikes' do
-      subject.accept_bikes([bike])
+      subject.accept_bike(bike)
       expect(subject.bikes).to include bike
     end
 
@@ -23,8 +23,8 @@ describe Garage do
     end
 
     it 'stops accepting bikes when it is full' do
-      subject.capacity.times { subject.accept_bikes([bike]) }
-      expect { subject.accept_bikes([bike]) }.to raise_error 'Sorry, garage full'
+      subject.capacity.times { subject.accept_bike(bike) }
+      expect { subject.accept_bike(bike) }.to raise_error 'Sorry, garage full'
     end
   end
 
@@ -37,9 +37,10 @@ describe Garage do
 
   describe '.release_bikes' do
     it 'removes bikes from array' do
-      subject.accept_bikes([bike, bike2])
-      subject.release_bikes([bike])
-      expect(subject.bikes).not_to include bike
+      subject.accept_bike(bike)
+      subject.accept_bike(bike2)
+      subject.release_bike
+      expect(subject.bikes).not_to include bike2
     end
   end
 end

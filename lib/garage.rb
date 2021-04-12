@@ -9,17 +9,18 @@ class Garage
     @capacity = capacity
   end
 
-  def accept_bikes(bikes)
+  def accept_bike(bike)
     raise  'Sorry, garage full' if full?
-    @bikes += bikes
+    @bikes << bike
   end
 
   def fix_bike(bike)
     bike.fix
   end
 
-  def release_bikes(bikes)
-    @bikes -= bikes
+  def release_bike
+    bike = bikes[-1]
+    bikes.delete(bike)
   end
 
   private
