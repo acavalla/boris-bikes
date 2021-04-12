@@ -3,6 +3,8 @@
 require_relative 'bike'
 require_relative 'van'
 require_relative 'garage'
+require_relative 'bike_container'
+
 
 class DockingStation
   attr_reader :bikes, :capacity, :vans
@@ -45,21 +47,12 @@ class DockingStation
     @vans << van
   end
 
-  def empty?
-    bikes.empty?
-  end
-
   def full?
     bikes.length == capacity
   end
 
-  def no_working_bikes?
-    bikes.select(&:working?).empty?
-  end
-
   def check_availability
-    raise 'Sorry, no bikes' if empty?
-    raise 'Sorry, no working bikes' if no_working_bikes?
+    raise 'Sorry, no working bikes' if working_bikes.empty?
   end
 
   def working_bikes

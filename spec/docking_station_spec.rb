@@ -17,7 +17,7 @@ describe DockingStation do
     end
 
     it 'should not create infinite bikes' do
-      expect { subject.release_bike }.to raise_error 'Sorry, no bikes'
+      expect { subject.release_bike }.to raise_error 'Sorry, no working bikes'
     end
 
     it 'should release a previously docked bike' do
