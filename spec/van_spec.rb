@@ -16,6 +16,17 @@ describe Van do
       subject.accept_bikes([bike, bike2])
       expect(subject.bikes).to include bike, bike2
     end
+
+    it 'has a maximum storage which defaults to 20' do
+      expect(subject.capacity).to eq 20
+    end
+
+    it 'stops accepting bikes when it is full' do
+      subject.capacity.times { subject.accept_bikes([bike]) }
+      puts subject.bikes.length
+      puts subject.bikes.length == subject.capacity
+      expect { subject.accept_bikes([bike]) }.to raise_error 'Sorry, van full'
+    end
   end
 
   describe '.release_bikes' do
