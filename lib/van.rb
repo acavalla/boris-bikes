@@ -12,8 +12,8 @@ class Van
   end
 
   def release_bikes
-    fixed_bikes = @bikes
+    arrived_bikes = @bikes
     @bikes = []
-    fixed_bikes
+    arrived_bikes
   end
 end
