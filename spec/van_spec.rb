@@ -23,8 +23,6 @@ describe Van do
 
     it 'stops accepting bikes when it is full' do
       subject.capacity.times { subject.accept_bikes([bike]) }
-      puts subject.bikes.length
-      puts subject.bikes.length == subject.capacity
       expect { subject.accept_bikes([bike]) }.to raise_error 'Sorry, van full'
     end
   end

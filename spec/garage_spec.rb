@@ -17,6 +17,15 @@ describe Garage do
       subject.accept_bikes([bike])
       expect(subject.bikes).to include bike
     end
+
+    it 'has a maximum storage which defaults to 20' do
+      expect(subject.capacity).to eq 20
+    end
+
+    it 'stops accepting bikes when it is full' do
+      subject.capacity.times { subject.accept_bikes([bike]) }
+      expect { subject.accept_bikes([bike]) }.to raise_error 'Sorry, garage full'
+    end
   end
 
   describe '.fix' do

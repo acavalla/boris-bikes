@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 class Garage
-  attr_reader :bikes
+  attr_reader :bikes, :capacity
+  DEFAULT_CAPACITY = 20
 
-  def initialize
+  def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
+    @capacity = capacity
   end
 
   def accept_bikes(bikes)
+    raise  'Sorry, garage full' if full?
     @bikes += bikes
   end
 
@@ -17,5 +20,10 @@ class Garage
 
   def release_bikes(bikes)
     @bikes -= bikes
+  end
+
+  private
+  def full?
+    bikes.length == capacity
   end
 end

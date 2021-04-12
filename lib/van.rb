@@ -22,6 +22,6 @@ class Van
 
   private
   def full?
-    @bikes.length == capacity
+    bikes.length == capacity
   end
 end
