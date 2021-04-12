@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-
+require 'spec_helper'
 require 'docking_station'
+# require 'support/shared_examples_for_bike_container'
 
 describe DockingStation do
   let(:bike) { double :bike, working?: true }
@@ -53,27 +54,11 @@ describe DockingStation do
 
     it 'stops accepting bikes when it is full' do
       subject.capacity.times { subject.dock(bike) }
-      expect { subject.dock(bike) }.to raise_error 'Sorry, station full'
+      expect { subject.dock(bike) }.to raise_error 'DockingStation full'
     end
   end
 
-  describe '.bike_pickup' do
-    it 'instantiates a van and moves the broken bikes into it' do
-      subject.dock(bike2)
-      allow(van_class).to receive(:new).and_return van
-      allow(van).to receive(:accept_bikes)
-      subject.bike_pickup
-      expect(subject.bikes).not_to include bike2
-    end
-  end
-
-  describe '.bike_dropoff' do
-    it 'receives a van of fixed bikes' do
-      allow(van).to receive(:release_bikes).and_return([bike])
-      subject.bike_dropoff(van)
-      expect(subject.bikes).to include bike
-    end
-  end
+  it_behaves_like BikeContainer
 
 
 
