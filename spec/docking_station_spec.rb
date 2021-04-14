@@ -14,6 +14,15 @@ describe DockingStation do
     end
   end
 
+  describe '.pickup' do
+    it 'removes all the broken bikes' do
+      subject.dock(bike)
+      subject.dock(bike2)
+      subject.pickup
+      expect(subject.bikes).to eq [bike]
+    end
+  end
+
   it_behaves_like BikeContainer
   # it { is_expected.to have_attributes(assigns(:bike) == 0) }
 end

@@ -12,7 +12,7 @@ class Van
   end
 
   def pickup(venue)
-    venue.is_a?Garage ? bikes = venue.bikes : bikes = broken_bikes
+    venue.is_a?Garage ? bikes = venue.bikes : bikes = venue.broken_bikes
     bikes.each do | bike |
       load(bike)
       venue.van_pickup bike
