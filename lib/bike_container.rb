@@ -15,7 +15,7 @@ module BikeContainer
 
   def remove_bike
     raise "#{self.class.name} empty" if empty?
-    bikes.pop 
+    bikes.pop
   end
 
   def empty?
