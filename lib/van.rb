@@ -18,6 +18,13 @@ class Van
     end
   end
 
+  def dropoff(venue)
+    bikes.each do | bike |
+      unload
+      venue.van_dropoff bike
+    end
+  end
+
   private
   def select_bikes(venue)
     venue.is_a?Garage ? bikes = venue.bikes : bikes = venue.broken_bikes
