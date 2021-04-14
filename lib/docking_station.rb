@@ -19,7 +19,7 @@ class DockingStation
 
   def release_bike
     raise 'Sorry, no working bikes' if working_bikes.empty?
-    bikes.delete working_bikes.pop
+    remove_bike working_bikes.pop
   end
 
   def dock(bike)
