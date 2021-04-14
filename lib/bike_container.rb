@@ -1,7 +1,7 @@
 module BikeContainer
   DEFAULT_CAPACITY = 20
 
-  attr_reader :capacity
+  attr_reader :capacity, :bikes
 
   def initialize(capacity = DEFAULT_CAPACITY)
     @capacity = capacity
@@ -15,7 +15,7 @@ module BikeContainer
 
   def remove_bike(bike = bikes.last)
     raise "#{self.class.name} empty" if empty?
-    self.bikes.delete bike
+    bikes.delete bike
   end
 
   def empty?
@@ -42,5 +42,5 @@ module BikeContainer
     venue.is_a?(DockingStation) ? venue.broken_bikes : venue.bikes
   end
 
-  attr_reader :bikes
+
 end

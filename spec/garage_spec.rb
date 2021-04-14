@@ -4,12 +4,13 @@ require 'garage'
 
 describe Garage do
   let(:bike) { double 'bike' }
-  let(:van) { double 'van', bikes: bike }
+  let(:van) { double 'van' }
 
   describe '.fix' do
     it 'has a method that calls fix on bikes' do
+      subject.add_bike(bike)
       expect(bike).to receive(:fix)
-      subject.fix_bike(bike)
+      subject.fix_bikes
     end
   end
 
