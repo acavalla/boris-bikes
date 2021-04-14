@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BikeContainer
   DEFAULT_CAPACITY = 20
 
@@ -10,11 +12,13 @@ module BikeContainer
 
   def add_bike(bike)
     raise "#{self.class.name} full" if full?
+
     bikes << bike
   end
 
   def remove_bike(bike = bikes.last)
     raise "#{self.class.name} empty" if empty?
+
     bikes.delete bike
   end
 
@@ -31,16 +35,15 @@ module BikeContainer
   end
 
   def pickup(venue)
-    select_bikes(venue).reverse.each do | bike |
+    select_bikes(venue).reverse.each do |bike|
       add_bike(bike)
       venue.remove_bike bike
     end
   end
 
   private
+
   def select_bikes(venue)
     venue.is_a?(DockingStation) ? venue.broken_bikes : venue.bikes
   end
-
-
 end

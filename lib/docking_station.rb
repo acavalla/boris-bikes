@@ -10,6 +10,7 @@ class DockingStation
 
   def release_bike
     raise 'Sorry, no working bikes' if working_bikes.empty?
+
     remove_bike working_bikes.pop
   end
 

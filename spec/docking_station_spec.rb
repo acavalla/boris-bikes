@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'spec_helper'
 require 'docking_station'
 # require 'support/shared_examples_for_bike_container'
@@ -6,9 +7,9 @@ require 'docking_station'
 describe DockingStation do
   let(:bike) { double :bike, working?: true }
   let(:bike2) { double :bike, working?: false }
-  let(:van) { double :van, bikes: [bike, bike]}
+  let(:van) { double :van, bikes: [bike, bike] }
 
-  describe "methods not covered by BikeContainer" do
+  describe 'methods not covered by BikeContainer' do
     before do
       subject.dock(bike)
       subject.dock(bike2)

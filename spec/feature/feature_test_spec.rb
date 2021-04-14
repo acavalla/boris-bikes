@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 describe 'Domain' do
   ds = DockingStation.new
   van = Van.new
-  bike, bike2, bike3 = Bike.new, Bike.new, Bike.new
+  bike = Bike.new
+  bike2 = Bike.new
+  bike3 = Bike.new
   bike.broken
   bike3.broken
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'bike_container'
 class Van
   include BikeContainer

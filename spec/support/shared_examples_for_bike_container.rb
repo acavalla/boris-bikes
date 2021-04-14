@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require './lib/bike_container'
 
 shared_examples_for BikeContainer do
   let(:bike) { double 'bike' }
-  let(:garage) { double 'garage', is_a: Garage, bikes: [bike]}
+  let(:garage) { double 'garage', is_a: Garage, bikes: [bike] }
 
   describe 'capacity' do
     it 'has a default capacity when initialized' do
@@ -18,18 +20,17 @@ shared_examples_for BikeContainer do
 
   describe 'add_bike' do
     it 'receives a bike' do
-      subject.add_bike double :bike
+      subject.add_bike(bike)
       expect(subject).not_to be_empty
     end
 
     it 'raises an error when full' do
       subject.capacity.times { subject.add_bike double :bike }
-      expect{ subject.add_bike double :bike }.to raise_error "#{described_class.name} full"
+      expect { subject.add_bike(bike) }.to raise_error "#{described_class.name} full"
     end
   end
 
   describe 'remove bike' do
-    let(:bike) { double 'bike' }
     before(:each) { subject.add_bike bike }
 
     it 'returns a bike' do
