@@ -12,10 +12,15 @@ class Van
   end
 
   def pickup(venue)
-    venue.is_a?Garage ? bikes = venue.bikes : bikes = venue.broken_bikes
-    bikes.each do | bike |
+    select_bikes(venue).each do | bike |
       load(bike)
       venue.van_pickup bike
     end
+  end
+
+  private
+  def select_bikes(venue)
+    venue.is_a?Garage ? bikes = venue.bikes : bikes = venue.broken_bikes
+    return bikes
   end
 end
