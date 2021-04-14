@@ -11,11 +11,12 @@ A progressive challenge to model how a developer would build a program for the T
 ## How to run
 
 1. Clone this repo: `git clone https://github.com/acavalla/boris-bikes.git`
-2. Open the Ruby REPL `irb -r runfile.rb`
+2. To run the test suite, run `rspec`
+2. Open the Ruby REPL `irb -r runfile.rb`. Please see below for demo of functionality.
 
+In this example, an instance of each class is instantiated, as well as three bikes. Two of the bikes are broken. The van picks up only the broken bikes, and drops them off at the garage. The garage fixes them, and sends them back to the station in the van.
 ```
 2.7.2 :001 > van = Van.new
-
  => #<Van:0x00007fc75d8b6678 @capacity=20, @bikes=[]>
 2.7.2 :002 > ds = DockingStation.new
  => #<DockingStation:0x00007fc759afc7b0 @capacity=20, @bikes=[]>
@@ -32,8 +33,7 @@ A progressive challenge to model how a developer would build a program for the T
 2.7.2 :008 > ds.dock(bike2)
  => [#<Bike:0x00007fc759a5e650 @working=false>, #<Bike:0x00007fc759a5e628 @working=true>]
 2.7.2 :009 > ds.dock(bike3)
- => [#<Bike:0x00007fc759a5e650 @working=false>, #<Bike:0x00007fc759a5e628 @working=true>, #<Bike:0x00007fc759a5e600 @working=false
->]
+ => [#<Bike:0x00007fc759a5e650 @working=false>, #<Bike:0x00007fc759a5e628 @working=true>, #<Bike:0x00007fc759a5e600 @working=false>]
 2.7.2 :010 > van.pickup(ds)
  => [#<Bike:0x00007fc759a5e600 @working=false>, #<Bike:0x00007fc759a5e650 @working=false>]
 2.7.2 :011 > garage.receive_shipment(van)
@@ -45,6 +45,5 @@ A progressive challenge to model how a developer would build a program for the T
 2.7.2 :014 > ds.receive_shipment(van)
  => [#<Bike:0x00007fc759a5e650 @working=true>, #<Bike:0x00007fc759a5e600 @working=true>]
 2.7.2 :015 > ds
- => #<DockingStation:0x00007fc759afc7b0 @capacity=20, @bikes=[#<Bike:0x00007fc759a5e628 @working=true>, #<Bike:0x00007fc759a5e650
-@working=true>, #<Bike:0x00007fc759a5e600 @working=true>]>
+ => #<DockingStation:0x00007fc759afc7b0 @capacity=20, @bikes=[#<Bike:0x00007fc759a5e628 @working=true>, #<Bike:0x00007fc759a5e650 @working=true>, #<Bike:0x00007fc759a5e600 @working=true>]>
 ```
