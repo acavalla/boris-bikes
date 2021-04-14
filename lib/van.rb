@@ -10,16 +10,4 @@ class Van
   def unload(bike)
     remove_bike(bike)
   end
-
-  def pickup(venue)
-    select_bikes(venue).reverse.each do | bike |
-      add_bike(bike)
-      venue.remove_bike bike
-    end
-  end
-
-  private
-  def select_bikes(venue)
-    venue.is_a?(DockingStation) ? venue.broken_bikes : venue.bikes
-  end
 end

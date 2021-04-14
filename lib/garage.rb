@@ -8,15 +8,7 @@ class Garage
     bike.fix
   end
 
-  def pickup(venue)
-    select_bikes(venue).reverse.each do | bike |
-      add_bike(bike)
-      venue.remove_bike bike
-    end
-  end
-
-  private
-  def select_bikes(venue)
-    venue.is_a?(DockingStation) ? venue.broken_bikes : venue.bikes
+  def receive_shipment(van)
+    pickup(van)
   end
 end

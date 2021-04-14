@@ -30,8 +30,16 @@ module BikeContainer
     bikes.select(&:working?)
   end
 
-  def all_bikes
-    bikes
+  def pickup(venue)
+    select_bikes(venue).reverse.each do | bike |
+      add_bike(bike)
+      venue.remove_bike bike
+    end
+  end
+
+  private
+  def select_bikes(venue)
+    venue.is_a?(DockingStation) ? venue.broken_bikes : venue.bikes
   end
 
   attr_reader :bikes

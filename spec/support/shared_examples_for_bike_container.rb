@@ -1,6 +1,9 @@
 require './lib/bike_container'
 
 shared_examples_for BikeContainer do
+  let(:bike) { double 'bike' }
+  let(:garage) { double 'garage', is_a: Garage, bikes: [bike]}
+
   describe 'capacity' do
     it 'has a default capacity when initialized' do
       expect(subject.capacity).to eq BikeContainer::DEFAULT_CAPACITY
@@ -44,4 +47,10 @@ shared_examples_for BikeContainer do
     end
   end
 
+  describe '.pickup' do
+    it 'removes an array of bikes from specific venue' do
+      allow(garage).to receive(:remove_bike)
+      subject.pickup(garage)
+    end
+  end
 end

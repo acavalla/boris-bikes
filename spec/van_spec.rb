@@ -13,13 +13,6 @@ describe Van do
         expect(subject).to receive(:add_bike)
         subject.load(bike)
       end
-
-      it 'can pickup an array of bikes' do
-        allow(garage).to receive(:working_bikes).and_return(garage.bikes)
-        expect(garage).to receive(:remove_bike).twice
-        subject.pickup(garage)
-        expect(subject).not_to be_empty
-      end
     end
 
     describe '.unload' do

@@ -17,10 +17,11 @@ class DockingStation
     add_bike bike
   end
 
+  def receive_shipment(van)
+    pickup(van)
+  end
+
   def broken_bikes
     bikes.reject(&:working?)
   end
-
-  private
-
 end

@@ -19,6 +19,13 @@ describe DockingStation do
         expect(subject.release_bike).to eq bike
       end
     end
+
+    describe '.receive_shipment' do
+      it 'is an alias for .pickup' do
+        expect(subject).to receive(:pickup)
+        subject.receive_shipment(van)
+      end
+    end
   end
 
   it_behaves_like BikeContainer
