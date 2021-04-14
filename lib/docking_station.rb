@@ -7,15 +7,6 @@ require_relative 'bike_container'
 
 class DockingStation
   include BikeContainer
-  attr_reader :bikes, :capacity
-
-  DEFAULT_CAPACITY = 20
-
-  def initialize(capacity = DEFAULT_CAPACITY)
-    @bikes = []
-    @vans = []
-    @capacity = capacity
-  end
 
   def release_bike
     raise 'Sorry, no working bikes' if working_bikes.empty?
@@ -26,13 +17,13 @@ class DockingStation
     add_bike bike
   end
 
+  def broken_bikes
+    bikes.reject(&:working?)
+  end
+
   private
 
   def working_bikes
     bikes.select(&:working?)
-  end
-
-  def broken_bikes
-    bikes.reject(&:working?)
   end
 end
