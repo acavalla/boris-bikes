@@ -30,6 +30,9 @@ module BikeContainer
     bikes.select(&:working?)
   end
 
-  private
+  def all_bikes
+    bikes
+  end
+
   attr_reader :bikes
 end

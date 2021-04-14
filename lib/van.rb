@@ -12,7 +12,7 @@ class Van
   end
 
   def pickup(venue)
-    select_bikes(venue).each do | bike |
+    select_bikes(venue).reverse.each do | bike |
       add_bike(bike)
       venue.remove_bike bike
     end
@@ -20,6 +20,6 @@ class Van
 
   private
   def select_bikes(venue)
-    venue.is_a?(DockingStation) ? venue.broken_bikes : venue.working_bikes
+    venue.is_a?(DockingStation) ? venue.broken_bikes : venue.bikes
   end
 end
