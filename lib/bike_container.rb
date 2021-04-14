@@ -13,9 +13,9 @@ module BikeContainer
     bikes << bike
   end
 
-  def remove_bike
+  def remove_bike(bike = bikes.last)
     raise "#{self.class.name} empty" if empty?
-    bikes.pop
+    bikes.delete bike
   end
 
   def empty?
