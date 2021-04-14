@@ -17,7 +17,13 @@ describe Van do
   end
 
   it 'can load an array of bikes' do
+    expect(garage).to receive(:remove_bike).twice.with(bike)
     subject.pickup(garage, garage.bikes)
     expect(subject).not_to be_empty
   end
+
+  # it 'can unload an array of bikes' do
+  #   subject.dropoff
+  #   expect(subject).to be_empty
+  # end
 end

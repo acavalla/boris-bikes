@@ -14,7 +14,7 @@ class Van
   def pickup(venue, bikes)
     bikes.each do | bike |
       load(bike)
-      venue.bikes.delete bike
+      venue.remove_bike bike
     end
   end
 end
