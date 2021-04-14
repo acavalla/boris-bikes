@@ -27,8 +27,6 @@ class Van
 
   private
   def select_bikes(venue)
-    puts venue
-    venue.is_a?(Garage) ? bikes = venue.bikes : bikes = venue.broken_bikes
-    return bikes
+    venue.is_a?(Garage) ? venue.bikes : venue.broken_bikes
   end
 end
