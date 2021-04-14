@@ -6,6 +6,7 @@ require 'docking_station'
 describe DockingStation do
   let(:bike) { double :bike, working?: true }
   let(:bike2) { double :bike, working?: false }
+  let(:van) { double :van, bikes: [bike, bike]}
 
   describe "methods not covered by BikeContainer" do
     before do
@@ -16,13 +17,6 @@ describe DockingStation do
     describe '.release_bike' do
       it 'should not release a broken bike' do
         expect(subject.release_bike).to eq bike
-      end
-    end
-
-    describe '.pickup' do
-      it 'removes all the broken bikes' do
-        subject.pickup
-        expect(subject.bikes).to eq [bike]
       end
     end
   end

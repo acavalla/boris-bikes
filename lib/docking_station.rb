@@ -26,10 +26,6 @@ class DockingStation
     add_bike bike
   end
 
-  def pickup
-    remove_bike
-  end
-
   private
 
   def working_bikes
