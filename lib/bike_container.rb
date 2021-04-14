@@ -15,7 +15,7 @@ module BikeContainer
 
   def remove_bike(bike = bikes.last)
     raise "#{self.class.name} empty" if empty?
-    bikes.delete bike
+    self.bikes.delete bike
   end
 
   def empty?
@@ -24,6 +24,10 @@ module BikeContainer
 
   def full?
     bikes.count >= capacity
+  end
+
+  def working_bikes
+    bikes.select(&:working?)
   end
 
   private

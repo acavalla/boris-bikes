@@ -23,7 +23,4 @@ class DockingStation
 
   private
 
-  def working_bikes
-    bikes.select(&:working?)
-  end
 end
