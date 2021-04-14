@@ -10,4 +10,11 @@ class Van
   def unload
     remove_bike
   end
+
+  def pickup(venue, bikes)
+    bikes.each do | bike |
+      load(bike)
+      venue.bikes.delete bike
+    end
+  end
 end
