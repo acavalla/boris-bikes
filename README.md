@@ -1,12 +1,19 @@
+![language-ruby](https://img.shields.io/badge/language-ruby-red)
+![version-2.6.5](https://img.shields.io/badge/version-2.7.2-lightgrey)
+![coverage-score](https://img.shields.io/badge/coverage-100%25-success)
+
 # Santander Cycle Project #
 
 A progressive challenge to model how a developer would build a program for the TfL bike rental and docking system, along with all the necessary infrastructure.
 
-## Tech and tools ##
-
-- Ruby
-- TDD
+###Concepts
+- TDD cycle (RGR)
 - Mixins
+- Domain Modelling
+- Encapsulation and cohesion
+- Single Responsibility Principle
+- Private methods
+- Isolated unit test using stubs and mocks
 
 ## How to run
 
