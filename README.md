@@ -1,6 +1,4 @@
-![language-ruby](https://img.shields.io/badge/language-ruby-red)
-![version-2.6.5](https://img.shields.io/badge/version-2.7.2-lightgrey)
-![coverage-score](https://img.shields.io/badge/coverage-100%25-success)
+![language-ruby](https://img.shields.io/badge/language-ruby-red) ![version-2.6.5](https://img.shields.io/badge/version-2.7.2-lightgrey) ![coverage-score](https://img.shields.io/badge/coverage-100%25-success)
 
 # Santander Cycle Project #
 
