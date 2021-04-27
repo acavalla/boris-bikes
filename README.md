@@ -7,11 +7,11 @@ A progressive challenge to model how a developer would build a program for the T
 ###Concepts
 - TDD cycle (RGR)
 - Mixins
-- Domain Modelling
+- Domain modelling
 - Encapsulation and cohesion
-- Single Responsibility Principle
+- Single responsibility principle
 - Private methods
-- Isolated unit test using stubs and mocks
+- Isolated unit tests using stubs and mocks
 
 ## How to run
 
